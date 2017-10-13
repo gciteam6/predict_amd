@@ -148,7 +148,7 @@ class simpleLSTM:
         self.chunk_size = self.X.shape[1] # 一回の系列データの長さ
         self.learning_rate = 0.01 # 学習率 適当
         self.forget_bias = 0.9  # 忘却率
-        self.epochs = 10 #エポック数
+        self.epochs = 1000 #エポック数
         
     def shuffle(self):
         '''
