@@ -14,6 +14,7 @@ import tensorflow as tf
 from sklearn.model_selection import train_test_split
 import random
 import time
+import sys
 
 
 # In[2]:
@@ -130,7 +131,7 @@ def get_chunked_data(x, chunk_size):
 # In[75]:
 
 class simpleLSTM:
-    def __init__(self, X, Y):        
+    def __init__(self, X, Y, epochs, magni):        
         # 学習データと検証用データに分けておく
         X_train, X_val, Y_train, Y_val = train_test_split(X, Y, test_size=int((X.shape[0] * 0.1)))
         self.X = X # 入力
@@ -148,7 +149,8 @@ class simpleLSTM:
         self.chunk_size = self.X.shape[1] # 一回の系列データの長さ
         self.learning_rate = 0.01 # 学習率 適当
         self.forget_bias = 0.9  # 忘却率
-        self.epochs = 1000 #エポック数
+        self.epochs = int(epochs) #エポック数
+        self.magni = float(magni) #lossの倍率
         
     def shuffle(self):
         '''
@@ -189,7 +191,7 @@ class simpleLSTM:
         '''
         お題と同じmean absolute errorを仕様
         '''
-        cost = tf.reduce_mean(tf.abs((output_ph - actual_ph)))
+        cost = tf.reduce_mean(tf.abs(self.magni * (output_ph - actual_ph)))
         tf.summary.scalar('loss', cost)
         return cost
     
@@ -247,7 +249,7 @@ class simpleLSTM:
                     
                     sess.run(optimizer, feed_dict=train_dict)
 
-                    if (epoch) % 10 == 0:
+                    if (epoch) % (self.epochs//10) == 0:
                         val_dict = {
                             input_ph:      self.X_val,
                             actual_ph:     self.Y_val,
@@ -291,6 +293,9 @@ class simpleLSTM:
 
 
 def main():
+
+	# 入力引数
+	args = sys.argv
 
 	# ## **データの準備**
 
@@ -400,8 +405,16 @@ def main():
 
 
 	# In[76]:
+	epochs = 100
+	magni = 1.0
 
-	model_01 = simpleLSTM(X, Y)
+	if len(args) > 1:
+		epochs = args[1]
+		magni = args[2]
+
+	print(epochs, magni)
+
+	model_01 = simpleLSTM(X, Y, epochs, magni)
 
 
 	# In[77]:
