@@ -430,3 +430,6 @@ def main():
     # In[28]:
 
     print('----actual training mae : '+str(abs(train_output_data - processed_predict).mean())+' ----')
+
+if __name__ == '__main__':
+    main()
