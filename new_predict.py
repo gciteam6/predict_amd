@@ -1,4 +1,3 @@
-
 # coding: utf-8
 
 # # **浮島発電所の発電量を予測してみる**
@@ -7,19 +6,15 @@
 
 # In[1]:
 
-
 # データ加工・処理・分析モジュール
 import numpy as np
 import pandas as pd
 import tensorflow as tf
 from sklearn.model_selection import train_test_split
 import random
-import sys
 import time
 
-
 # In[2]:
-
 
 def set_time(dataframe, col_name):
     '''
@@ -30,7 +25,6 @@ def set_time(dataframe, col_name):
 
 
 # In[3]:
-
 
 def transform_time(x):
     '''
@@ -48,7 +42,6 @@ def transform_time(x):
 
 # In[4]:
 
-
 def normalize_array(x):
     '''
     min, max, min-max正規化を行なった配列(np.array)を返す
@@ -62,7 +55,6 @@ def normalize_array(x):
 
 # In[5]:
 
-
 def denormalize_array(normalized_x, x_min, x_max):
     '''
     正規化前のmin, maxを用いて元のスケールに戻す
@@ -73,7 +65,6 @@ def denormalize_array(normalized_x, x_min, x_max):
 
 
 # In[6]:
-
 
 def standardize_array(x):
     '''
@@ -88,7 +79,6 @@ def standardize_array(x):
 
 # In[7]:
 
-
 def destandardize_array(standardized_x, x_mean, x_sigma):
     '''
     標準化前のmean, sigma用いて元のスケールに戻す
@@ -99,7 +89,6 @@ def destandardize_array(standardized_x, x_mean, x_sigma):
 
 
 # In[8]:
-
 
 def get_chunked_data(x, chunk_size):
     '''
@@ -113,21 +102,21 @@ def get_chunked_data(x, chunk_size):
 
 # ### **モデルの構築**
 
-# 前日の20時までの横浜のアメダスの日射量データを用いて翌日の00:00~23:50を予測する
+# 前日の20時までの山梨県富士河口湖のアメダスの日射量データを用いて翌日の00:00~23:30を予測する
 # 
 # 前日の20時までのデータしか使えないので川崎近くのアメダスデータを使うのは予測として適切か疑問だったのでとりあえず1日程度ラグがありそうな(※要出典)ここのデータをつかう
 # 
 # (例)
 # 
-# 8/17の00:00 ~ 23:50を予測するとき
+# 8/17の00:00 ~ 23:30を予測するとき
 # 
-# 8/17の23:50を8/15 20:10 ~ 8/16 20:00
+# 8/17の23:30を8/15 20:00 ~ 8/16 20:00
 # 
-# 8/17の23:40を8/15 20:00 ~ 8/16 19:50
+# 8/17の23:00を8/15 19:30 ~ 8/16 19:30
 # 
 # ....
 # 
-# 8/17の00:00を8/14 20:00 ~ 8/15 20:10で予測する
+# 8/17の00:00を8/14 20:30 ~ 8/15 20:30で予測する
 # 
 # 参考サイト：http://www.madopro.net/entry/char_level_lm_with_simple_rnn
 # 
@@ -136,18 +125,17 @@ def get_chunked_data(x, chunk_size):
 #           https://www.tensorflow.org/install/migration
 #           
 
-# In[133]:
-
+# In[75]:
 
 class simpleLSTM:
-    def __init__(self, X, Y, epochs = 100, magni = 1000, batch_size = 200):
+    def __init__(self, X, Y, epochs=100, magni=1000, batch_size = 200):        
         # 学習データと検証用データに分けておく
         X_train, X_val, Y_train, Y_val = train_test_split(X, Y, test_size=int((X.shape[0] * 0.1)))
         self.X = X # 入力
         self.Y = Y # 教師
         self.X_val = X_val # 検証用
         self.Y_val = Y_val #検証用
-        
+
         '''
         諸変数の設定
         '''
@@ -156,10 +144,10 @@ class simpleLSTM:
         self.output_layer_size = 1 #出力層の数、求める値は時間あたりの発電量の値1つなので1
         self.batch_size = batch_size #バッチサイズ、適当
         self.chunk_size = self.X.shape[1] # 一回の系列データの長さ
-        self.learning_rate = 0.001 # 学習率 適当
+        self.learning_rate = 0.01 # 学習率 適当
         self.forget_bias = 0.9  # 忘却率
-        self.magni = float(magni) #lossの拡大倍率
         self.epochs = int(epochs) #エポック数
+        self.magni = float(magni) #lossの倍率
         
     def shuffle(self):
         '''
@@ -188,6 +176,7 @@ class simpleLSTM:
         in3 = tf.matmul(in2, hidden_w) + hidden_b
         in4 = tf.split(in3, self.chunk_size, 0)
           
+            
         # BasicLSTMCellを定義
         cell = tf.contrib.rnn.BasicLSTMCell(self.hidden_layer_size, forget_bias=self.forget_bias, state_is_tuple=False)
         rnn_outputs, states = tf.contrib.rnn.static_rnn(cell, in4, initial_state=inistate_ph)
@@ -199,7 +188,7 @@ class simpleLSTM:
         '''
         お題と同じmean absolute errorを仕様
         '''
-        cost = tf.reduce_mean(tf.abs(self.magni*(output_ph - actual_ph)))
+        cost = tf.reduce_mean(tf.abs(self.magni * (output_ph - actual_ph)))
         tf.summary.scalar('loss', cost)
         return cost
     
@@ -302,9 +291,6 @@ class simpleLSTM:
 
 def main():
 
-    # 入力引数
-    args = sys.argv
-
     # ## **データの準備**
 
      # In[101]:
@@ -387,22 +373,27 @@ def main():
 
     # In[134]:
 
-    epochs = 100
-    magni = 1000
-    batch_size = 200
+    model_01 = simpleLSTM(X, Y)
 
-    if len(args) > 1:
-        epochs = args[1]
-        magni = args[2]
-        batch_size = args[3]
+    # In[143]:
+    print('----start prediction----')
+    batch_size = 10000
+    n_batch = len(X) // batch_size
+    processed_predict = np.array([])
+    for i in range(n_batch+1):
+        s_idx = i * batch_size
+        e_idx = (i+1) * batch_size
+        if e_idx > len(X):
+            e_idx = len(X)
+        predict = model_01.predict(X[s_idx:e_idx])
+        predict = np.array(predict).reshape(len(predict[0]))
+        tmp_predict = denormalize_array(predict, output_min, output_max)
+        processed_predict = np.r_[processed_predict, tmp_predict]
+    print('----end prediction----')
 
-    print('epochs : '+str(epochs)+' magni :'+str(magni)+ ' batch_size :' + str(batch_size))
+    # In[28]:
 
-    model_01 = simpleLSTM(X, Y, epochs = int(epochs), magni = float(magni), batch_size = int(batch_size))
+    print('----actual training mae : '+str(abs(train_output_data - processed_predict).mean())+' ----')
 
-
-    # In[135]:
-
-    print('----start training----')
-    model_01.train()
-    print('----finish training----')
+if __name__ == '__main__':
+    main()
