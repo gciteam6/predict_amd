@@ -394,7 +394,7 @@ def main():
         epochs = args[1]
         magni = args[2]
 
-    print('epochs : '+str(epochs)+'magni :'+str(magni))
+    print('epochs : '+str(epochs)+' magni :'+str(magni))
 
     model_01 = simpleLSTM(X, Y, epochs = int(epochs), magni = float(magni))
 
@@ -413,7 +413,7 @@ def main():
 
     # In[143]:
     print('----start prediction----')
-    batch_size = 1000
+    batch_size = 10000
     n_batch = len(X) // batch_size
     processed_predict = np.array([])
     for i in range(n_batch+1):
