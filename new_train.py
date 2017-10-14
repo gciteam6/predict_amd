@@ -406,3 +406,6 @@ def main():
     print('----start training----')
     model_01.train()
     print('----finish training----')
+    
+if __name__ == '__main__':
+    main()
