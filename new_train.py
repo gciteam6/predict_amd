@@ -140,7 +140,7 @@ def get_chunked_data(x, chunk_size):
 
 
 class simpleLSTM:
-    def __init__(self, X, Y, epochs = 100, magni = 1):
+    def __init__(self, X, Y, epochs = 100, magni = 1, batch_size = 200):
         # 学習データと検証用データに分けておく
         X_train, X_val, Y_train, Y_val = train_test_split(X, Y, test_size=int((X.shape[0] * 0.1)))
         self.X = X # 入力
@@ -154,7 +154,7 @@ class simpleLSTM:
         self.input_layer_size = self.X.shape[2] #入力層の数、一つ一つのデータはslの値ひとつだけなので1
         self.hidden_layer_size = 200 # 隠れ層の数、適当
         self.output_layer_size = 1 #出力層の数、求める値は時間あたりの発電量の値1つなので1
-        self.batch_size = 200 #バッチサイズ、適当
+        self.batch_size = batch_size #バッチサイズ、適当
         self.chunk_size = self.X.shape[1] # 一回の系列データの長さ
         self.learning_rate = 0.01 # 学習率 適当
         self.forget_bias = 0.9  # 忘却率
@@ -389,14 +389,16 @@ def main():
 
     epochs = 100
     magni = 1.0
+    batch_size = 200
 
     if len(args) > 1:
         epochs = args[1]
         magni = args[2]
+        batch_size = args[3]
 
-    print('epochs : '+str(epochs)+' magni :'+str(magni))
+    print('epochs : '+str(epochs)+' magni :'+str(magni)+ ' batch_size :' + str(batch_size))
 
-    model_01 = simpleLSTM(X, Y, epochs = int(epochs), magni = float(magni))
+    model_01 = simpleLSTM(X, Y, epochs = int(epochs), magni = float(magni), batch_size = int(batch_size))
 
 
     # In[135]:
