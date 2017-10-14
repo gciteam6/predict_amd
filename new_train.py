@@ -158,8 +158,8 @@ class simpleLSTM:
         self.chunk_size = self.X.shape[1] # 一回の系列データの長さ
         self.learning_rate = 0.01 # 学習率 適当
         self.forget_bias = 0.9  # 忘却率
-        self.magni = magni #lossの拡大倍率
-        self.epochs = epochs #エポック数
+        self.magni = float(magni) #lossの拡大倍率
+        self.epochs = int(epochs) #エポック数
         
     def shuffle(self):
         '''
@@ -396,7 +396,7 @@ def main():
 
     print('epochs : '+str(epochs)+'magni :'+str(magni))
 
-    model_01 = simpleLSTM(X, Y, epochs = epochs, magni = magni)
+    model_01 = simpleLSTM(X, Y, epochs = int(epochs), magni = float(magni))
 
 
     # In[135]:
