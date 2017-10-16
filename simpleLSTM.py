@@ -79,7 +79,7 @@ class simpleLSTM:
         adamを仕様beta1, beta2は元論文の推奨値を仕様
         '''
         with tf.name_scope("training") as scope:
-            optimizer = tf.train.AdamOptimizer(learning_rate=self.learning_rate, beta1=0.9, beta2=0.999).minimize(cost)
+            optimizer = tf.train.MomentumOptimizer(learning_rate=self.learning_rate, momentum = 0.9).minimize(cost)
             return optimizer
     
     def train(self):
