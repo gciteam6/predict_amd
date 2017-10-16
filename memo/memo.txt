@@ -8,3 +8,7 @@ max-minが決まってる(値のrangeが決まっている)
 https://qiita.com/akimach/items/88356ef46e98f045b035
 
 https://machinelearningmastery.com/tune-lstm-hyperparameters-keras-time-series-forecasting/
+
+浮島と扇島の差は実は大きい
+二つの発電所のmaeは130と実は大きい
+学習の際は使うデータは一緒で構わないと思うが正解データ別々のものを用意するべきだろう

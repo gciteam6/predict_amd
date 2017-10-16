@@ -395,5 +395,8 @@ def main():
 
     print('----actual training mae : '+str(abs(train_output_data - processed_predict).mean())+' ----')
 
+    print('expected_output : ', processed_predict[0:100])
+    print('actual_output : ', train_output_data[0:100])
+
 if __name__ == '__main__':
     main()
