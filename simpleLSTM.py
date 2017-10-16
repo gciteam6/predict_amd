@@ -5,8 +5,6 @@ import pandas as pd
 import tensorflow as tf
 from sklearn.model_selection import train_test_split
 import random
-import sys
-import time
 
 class simpleLSTM:
     def __init__(self, X, Y, epochs = 100, batch_size = 150, model_name = "model_1"):
