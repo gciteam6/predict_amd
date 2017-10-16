@@ -5,60 +5,36 @@
 # データ加工・処理・分析モジュール
 import numpy as np
 import pandas as pd
-import tensorflow as tf
-import sys
+import argparse
 import simpleLSTM
 from preprocess import *
 
 def main():
 	
 	# In[109]:
+	# パーサーを作る
+	parser = argparse.ArgumentParser(
+			prog='predict output ', # プログラム名
+            usage='predict output data by lstm', # プログラムの利用方法
+            description='you can change place to predict', # 引数のヘルプの前に表示
+            epilog='end', # 引数のヘルプの後で表示
+            add_help=True, # -h/–help オプションの追加
+            )
+
+	parser.add_argument('-p', '--target_place', help='select place', type=int, required = True)
+
 	# 入力引数
-	args = sys.argv
+	args = parser.parse_args()
 
-	target_place = 1
-	epochs = 50
-	batch_size = 150
-
-	if len(args) > 1:
-		target_place = int(args[1])
+	target_place = args.target_place
 
 	model_name = "model_"+str(target_place)
-	print("---- trainning " + model_name + " ----")
+	print("---- predict by  " + model_name + " ----")
 	print("target_place : " + str(target_place))
 
 	# ## **データの準備**
 
-	# In[10]:
-
-
-	# 正解データを作る
-	try:
-	    true_output = pd.read_csv('data/processed_data/output_by30.tsv', delimiter = '\t')
-	    true_output['datetime'] = true_output['datetime'].map(lambda x : pd.to_datetime(x))
-	    
-	except:
-	    # train_kwhをエクセル等で開くとdatetimeが指数表示に直される可能性がある
-	    # その場合うまくいかないので201201010120の形になってることを確認する必要あり
-	    true_output = pd.read_csv('data/raw_data/train_kwh.tsv', delimiter = '\t')
-
-	    # datetimeの行をpd.Timestampのインスタンスに変更
-	    true_output = set_time(true_output, 'datetime')
-	    true_output['datetime'] = true_output['datetime'].map(lambda x : pd.to_datetime(x))
-
-	    # 30分ごとに合計を集計
-	    true_output = true_output.set_index('datetime').groupby(pd.TimeGrouper(freq='1800s', closed='left')).sum()
-
-	    true_output.to_csv('data/processed_data/output_by30.tsv', sep='\t') 
-	    
-	    true_output = pd.read_csv('data/processed_data/output_by30.tsv', delimiter = '\t')
-	    true_output['datetime'] = true_output['datetime'].map(lambda x : pd.to_datetime(x))
-	    
-	true_output.head()
-
-
-	# In[11]:
-	
+	# In[11]:	
 	print("---- load output data ----")
 	# 10分単位の発電量のデータを取ってくる
 	output_data = pd.read_csv('data/raw_data/train_kwh.tsv', delimiter = '\t')
@@ -66,12 +42,8 @@ def main():
 	# datetimeの行をpd.Timestampのインスタンスに変更
 	output_data = set_time(output_data, 'datetime')
 	output_data['datetime'] = output_data['datetime'].map(lambda x : pd.to_datetime(x))
-	    
-	output_data.head()
-
 
 	# In[19]:
-	
 	print("---- load input data ----")
 	# アメダスデータの読み込み
 	if target_place == 1 or target_place == 2:
@@ -80,20 +52,17 @@ def main():
 	    amd_data = pd.read_csv('data/raw_data/amd_46106.tsv', delimiter = '\t')
 	    amd_data = set_time(amd_data, 'datetime')
 	    amd_data['datetime'] = amd_data['datetime'].map(lambda x : pd.to_datetime(x))
-	    amd_data.head()
 	elif target_place == 3:
 	    # 甲府アメダスのデータを使って予測する, amd_49142
 	    # 各amdidはamd_masterに記載されている
 	    amd_data = pd.read_csv('data/raw_data/amd_49142.tsv', delimiter = '\t')
 	    amd_data = set_time(amd_data, 'datetime')
 	    amd_data['datetime'] = amd_data['datetime'].map(lambda x : pd.to_datetime(x))
-	    amd_data.head()
 	else:
 	    raise ValueError("invalid input target_place_num")
 
 
 	# In[22]:
-
 
 	# モデル構築のためにデータを分割する
 

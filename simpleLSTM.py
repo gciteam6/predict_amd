@@ -7,7 +7,7 @@ from sklearn.model_selection import train_test_split
 import random
 
 class simpleLSTM:
-    def __init__(self, X, Y, epochs = 100, batch_size = 150, magni = magni, model_name = "model_1"):
+    def __init__(self, X, Y, epochs = 100, batch_size = 150, loss_scale = 1.0, model_name = "model_1"):
         # 学習データと検証用データに分けておく
         X_train, X_val, Y_train, Y_val = train_test_split(X, Y, test_size=int((X.shape[0] * 0.1)))
         self.X = X # 入力
@@ -26,7 +26,7 @@ class simpleLSTM:
         self.learning_rate = 0.01 # 学習率 適当
         self.forget_bias = 0.9  # 忘却率
         self.epochs = int(epochs) #エポック数
-        self.magni = float(magni)
+        self.loss_scale = float(loss_scale)
         
         # 学習データの保存
         self.model_name = str(model_name)
@@ -70,7 +70,7 @@ class simpleLSTM:
         '''
         お題と同じmean absolute errorを仕様
         '''
-        cost = tf.reduce_mean(tf.abs(self.magni*(output_ph - actual_ph)))
+        cost = tf.reduce_mean(tf.abs(self.loss_scale*(output_ph - actual_ph)))
         tf.summary.scalar('loss', cost)
         return cost
     
@@ -139,10 +139,10 @@ class simpleLSTM:
                         summary_writer.add_summary(summary_str, epoch)
                         
                     datas = sess.run(weights)
-                    saver.save(sess, "./data/model/" + str(self.model_name) + ".ckpt")
+                    saver.save(sess, "./data/"+str(self.model_name)+"/" + str(self.model_name) + ".ckpt")
                     
                 datas = sess.run(weights)
-                saver.save(sess, "./data/model/" + str(self.model_name) + ".ckpt")
+                saver.save(sess, "./data/"+str(self.model_name)+"/" + str(self.model_name) + ".ckpt")
                 
     def predict(self, X_predict, model_name = "test_model"):
         '''
@@ -164,7 +164,7 @@ class simpleLSTM:
         with tf.Session() as sess:
             # 保存したモデルをロード
             saver = tf.train.Saver()
-            saver.restore(sess, "./data/model/" + str(model_name) + ".ckpt")
+            saver.restore(sess, "./data/"+str(model_name)+"/" + str(model_name) + ".ckpt")
 
             # ロードしたモデルを使って予測結果を計算
             expected_output = sess.run([prediction], feed_dict=pre_dict)

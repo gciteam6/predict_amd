@@ -69,7 +69,6 @@ def get_chunked_data(x, chunk_size):
 
 # In[9]:
 
-
 def drop_nan(X, Y):
     '''
     正解データがnanであるデータの組を削除
