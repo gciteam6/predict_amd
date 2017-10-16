@@ -302,9 +302,10 @@ class simpleLSTM:
 
 def main():
 
+
     # 入力引数
     args = sys.argv
-
+    
     # ## **データの準備**
 
      # In[101]:
