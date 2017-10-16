@@ -49,7 +49,7 @@ def main():
 	model_name = "model_"+str(target_place)
 
 	print("---- trainning " + model_name + " ----")
-	print("target_place : " + str(target_place) + " epochs : " + str(epochs) + " batch_size : " + str(batch_size) + " loss_scale : " + str(loss_scale))
+	print("target_place : " + str(target_place) + ", epochs : " + str(epochs) + ", batch_size : " + str(batch_size) + ", loss_scale : " + str(loss_scale))
 
 	# ## **データの準備**
 
