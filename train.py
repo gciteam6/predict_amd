@@ -30,7 +30,7 @@ def main():
 	model_name = "model_"+str(target_place)
 
 	print("---- trainning " + model_name + " ----")
-	print("target_place : " + str(target_place) + " epochs : " + str(epochs) + " batch_size : " + str(batch_size))
+	print("target_place : " + str(target_place) + " epochs : " + str(epochs) + " batch_size : " + str(batch_size) + " enlarge loss rate : " + str(magni))
 
 	# ## **データの準備**
 
@@ -133,7 +133,7 @@ def main():
 	# In[26]:
 
 	print("---- start training ----")
-	model_01 = simpleLSTM.simpleLSTM(X, Y, epochs = epochs, batch_size = batch_size, model_name = model_name)
+	model_01 = simpleLSTM.simpleLSTM(X, Y, epochs = epochs, batch_size = batch_size, magni = magni, model_name = model_name)
 
 
 	# In[ ]

@@ -7,7 +7,7 @@ from sklearn.model_selection import train_test_split
 import random
 
 class simpleLSTM:
-    def __init__(self, X, Y, epochs = 100, batch_size = 150, model_name = "model_1"):
+    def __init__(self, X, Y, epochs = 100, batch_size = 150, magni = magni, model_name = "model_1"):
         # 学習データと検証用データに分けておく
         X_train, X_val, Y_train, Y_val = train_test_split(X, Y, test_size=int((X.shape[0] * 0.1)))
         self.X = X # 入力
@@ -21,11 +21,12 @@ class simpleLSTM:
         self.input_layer_size = self.X.shape[2] #入力層の数、一つ一つのデータはslの値ひとつだけなので1
         self.hidden_layer_size = 200 # 隠れ層の数、適当
         self.output_layer_size = 1 #出力層の数、求める値は時間あたりの発電量の値1つなので1
-        self.batch_size = batch_size #バッチサイズ、適当
+        self.batch_size = int(batch_size) #バッチサイズ、適当
         self.chunk_size = self.X.shape[1] # 一回の系列データの長さ
         self.learning_rate = 0.01 # 学習率 適当
         self.forget_bias = 0.9  # 忘却率
-        self.epochs = epochs #エポック数
+        self.epochs = int(epochs) #エポック数
+        self.magni = float(magni)
         
         # 学習データの保存
         self.model_name = str(model_name)
@@ -69,7 +70,7 @@ class simpleLSTM:
         '''
         お題と同じmean absolute errorを仕様
         '''
-        cost = tf.reduce_mean(tf.abs(10*(output_ph - actual_ph)))
+        cost = tf.reduce_mean(tf.abs(self.magni*(output_ph - actual_ph)))
         tf.summary.scalar('loss', cost)
         return cost
     
