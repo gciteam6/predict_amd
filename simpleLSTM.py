@@ -23,7 +23,7 @@ class simpleLSTM:
         self.output_layer_size = 1 #出力層の数、求める値は時間あたりの発電量の値1つなので1
         self.batch_size = int(batch_size) #バッチサイズ、適当
         self.chunk_size = self.X.shape[1] # 一回の系列データの長さ
-        self.learning_rate = 0.01 # 学習率 適当
+        self.learning_rate = 0.1 # 学習率 適当
         self.forget_bias = 0.9  # 忘却率
         self.epochs = int(epochs) #エポック数
         self.loss_scale = float(loss_scale)
