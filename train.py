@@ -18,7 +18,7 @@ def main():
 	parser = argparse.ArgumentParser(
 			prog='training lstm ', # プログラム名
             usage='target_place is required value', # プログラムの利用方法
-            description='you can adjust place to predict, epochs, batch_size, loss_scale of lstm', # 引数のヘルプの前に表示
+            description='you can adjust place to predict, epochs, batch_size, loss_scale, chunk_size of lstm', # 引数のヘルプの前に表示
             epilog='end', # 引数のヘルプの後で表示
             add_help=True, # -h/–help オプションの追加
             )
@@ -28,6 +28,7 @@ def main():
 	parser.add_argument('-e', '--epochs', help='select epochs', type=int, required = False)
 	parser.add_argument('-b', '--batch_size', help='select batch_size', type=int, required = False)
 	parser.add_argument('-s', '--loss_scale', help='select place', type=int, required = False)
+	parser.add_argument('-c', '--chunk_size', help='select chunk_size', type=int, required = False)
 
 	# 入力引数
 	args = parser.parse_args()
@@ -45,6 +46,10 @@ def main():
 	loss_scale = 1.0
 	if args.loss_scale:
 		loss_scale = args.loss_scale
+
+	chunk_size = 144
+	if args.chunk_size:
+		chunk_size = args.chunk_size
 	
 	model_name = "model_"+str(target_place)
 
@@ -100,7 +105,7 @@ def main():
 	# 2012/01/03 03:50 ~ 2015/12/31 23:50のデータを予測する
 	train_x_startID = amd_data[amd_data['datetime'] == pd.to_datetime('2012-01-01 00:10')].index[0]
 	train_x_endID = amd_data[amd_data['datetime'] == pd.to_datetime('2015-12-30 20:00')].index[0]
-	train_y_startID = amd_data[amd_data['datetime'] == pd.to_datetime('2012-01-03 03:50')].index[0]
+	train_y_startID = train_x_startID + 167 + chunk_size -1
 	train_y_endID = amd_data[amd_data['datetime'] == pd.to_datetime('2015-12-31 23:50')].index[0]
 
 	train_amd_data = amd_data[['sl', 'max_tp']][train_x_startID:(train_x_endID+1)]
@@ -109,18 +114,14 @@ def main():
 	# 予測に必要なデータ
 	# 2015/12/29 20:30 ~ 2017/3/30 20:00のamdデータを用いて
 	# 2016/01/01 00:00 ~ 2017/3/31 23:50のoutputデータを予測する
-	test_startID = amd_data[amd_data['datetime'] == pd.to_datetime('2015-12-29 20:50')].index[0]
+	test_y_startID = amd_data[amd_data['datetime'] == pd.to_datetime('2016-01-01 00:00')].index[0]
+	test_startID = test_y_startID - 167 - chunk_size + 1
 	test_endID = amd_data[amd_data['datetime'] == pd.to_datetime('2017-3-30 20:00')].index[0]
 
 	test_amd_data = amd_data[['sl', 'max_tp']][test_startID:(test_endID+1)]
 
 
 	# In[23]:
-
-
-	# rnnに突っ込むための準備
-
-	chunk_size = 144
 
 	# rnnに突っ込むためにmin-max正規化しておく
 	normalized_amd = (train_amd_data - train_amd_data.min()) / (train_amd_data.max() - train_amd_data.min())

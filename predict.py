@@ -22,11 +22,13 @@ def main():
             )
 
 	parser.add_argument('-p', '--target_place', help='select place', type=int, required = True)
+	parser.add_argument('-c', '--chunk_size', help='this parameter must be same learned model', type=int, required = True)
 
 	# 入力引数
 	args = parser.parse_args()
 
 	target_place = args.target_place
+	chunk_size = args.chunk_size
 
 	model_name = "model_"+str(target_place)
 	print("---- predict by  " + model_name + " ----")
@@ -75,7 +77,7 @@ def main():
 	# 2012/01/03 03:50 ~ 2015/12/31 23:50のデータを予測する
 	train_x_startID = amd_data[amd_data['datetime'] == pd.to_datetime('2012-01-01 00:10')].index[0]
 	train_x_endID = amd_data[amd_data['datetime'] == pd.to_datetime('2015-12-30 20:00')].index[0]
-	train_y_startID = amd_data[amd_data['datetime'] == pd.to_datetime('2012-01-03 03:50')].index[0]
+	train_y_startID = train_x_startID + 167 + chunk_size -1
 	train_y_endID = amd_data[amd_data['datetime'] == pd.to_datetime('2015-12-31 23:50')].index[0]
 
 	train_amd_data = amd_data[['sl', 'max_tp']][train_x_startID:(train_x_endID+1)]
@@ -84,7 +86,8 @@ def main():
 	# 予測に必要なデータ
 	# 2015/12/29 20:30 ~ 2017/3/30 20:00のamdデータを用いて
 	# 2016/01/01 00:00 ~ 2017/3/31 23:50のoutputデータを予測する
-	test_startID = amd_data[amd_data['datetime'] == pd.to_datetime('2015-12-30 20:20')].index[0]
+	test_y_startID = amd_data[amd_data['datetime'] == pd.to_datetime('2016-01-01 00:00')].index[0]
+	test_startID = test_y_startID - 167 - chunk_size + 1
 	test_endID = amd_data[amd_data['datetime'] == pd.to_datetime('2017-3-30 20:00')].index[0]
 
 	test_amd_data = amd_data[['sl', 'max_tp']][test_startID:(test_endID+1)]
@@ -95,7 +98,6 @@ def main():
 
 	# rnnに突っ込むための準備
 
-	chunk_size = 144
 
 	# rnnに突っ込むためにmin-max正規化しておく
 	normalized_amd = (train_amd_data - train_amd_data.min()) / (train_amd_data.max() - train_amd_data.min())
