@@ -22,13 +22,15 @@ def main():
             )
 
 	parser.add_argument('-p', '--target_place', help='select place', type=int, required = True)
-	parser.add_argument('-c', '--chunk_size', help='this parameter must be same learned model', type=int, required = True)
+	parser.add_argument('-c', '--chunk_size', help='this parameter must be same learned model', type=int, required = False)
 
 	# 入力引数
 	args = parser.parse_args()
 
 	target_place = args.target_place
-	chunk_size = args.chunk_size
+	chunk_size = 144
+	if args.chunk_size:
+		chunk_size = args.chunk_size
 
 	model_name = "model_"+str(target_place)
 	print("---- predict by  " + model_name + " ----")
