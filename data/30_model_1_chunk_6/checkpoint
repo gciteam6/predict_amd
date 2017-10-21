@@ -1,0 +1,2 @@
+model_checkpoint_path: "30_model_1_chunk_6.ckpt"
+all_model_checkpoint_paths: "30_model_1_chunk_6.ckpt"
