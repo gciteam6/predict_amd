@@ -97,7 +97,7 @@ def main():
 	if args.epochs:
 		epochs = args.epochs
 	
-	model_name = "model_"+str(target_place)+"_chunk_"+str(chunk_size)
+	model_name = "model_"+str(target_place)+"_chunk_"+str(chunk_size)+"_epoch_"+str(epochs)
 
 	print("---- trainning " + model_name + " ----")
 	
