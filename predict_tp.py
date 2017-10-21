@@ -91,14 +91,18 @@ def main():
 
 	parser.add_argument('-p', '--target_place', help='select place', type=int, required = True)
 	parser.add_argument('-c', '--chunk_size', help='this parameter must be same learned model', type=int, required = True)
+	parser.add_argument('-e', '--epochs', help='select epochs', type=int, required = False)
 
 	# 入力引数
 	args = parser.parse_args()
 
 	target_place = args.target_place
 	chunk_size = args.chunk_size
+	epochs = 100
+	if args.epochs:
+		epochs = args.epochs
 
-	model_name = "model_"+str(target_place)+"_chunk_"+str(chunk_size)
+	model_name = "model_"+str(target_place)+"_chunk_"+str(chunk_size)+"_epoch_"+str(epochs)
 
 	print("---- predict " + model_name + " ----")
 	
