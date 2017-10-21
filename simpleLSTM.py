@@ -12,6 +12,10 @@
 # 
 # 8/16 23:50 ~ 8/17 23:40のデータから8/17の23:50のデータを予測する
 # 
+from sklearn.model_selection import train_test_split
+import tensorflow as tf
+import random
+import numpy as np
 
 class simpleLSTM:
     def __init__(self, X, Y, epochs = 1000, batch_size = 150, model_name = "test_model"):

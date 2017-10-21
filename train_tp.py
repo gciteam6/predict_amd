@@ -73,12 +73,6 @@ def drop_nan(X, Y):
     Y = Y[~mask]
     return X, Y
 
-def calc_mae(X, Y):
-    mse = 0
-    for i in range(len(X)):
-        mse += np.abs(X[i]- Y[i])
-    return mse/len(X)
-
 def main():
 	# パーサーを作る
 	parser = argparse.ArgumentParser(
@@ -91,6 +85,7 @@ def main():
 
 	parser.add_argument('-p', '--target_place', help='select place', type=int, required = True)
 	parser.add_argument('-c', '--chunk_size', help='this parameter must be same learned model', type=int, required = True)
+	parser.add_argument('-e', '--epochs', help='select epochs', type=int, required = False)
 
 	# 入力引数
 	args = parser.parse_args()
@@ -98,11 +93,21 @@ def main():
 	target_place = args.target_place
 	chunk_size = args.chunk_size
 
+	epochs = 100
+	if args.epochs:
+		epochs = args.epochs
+	
 	model_name = "model_"+str(target_place)+"_chunk_"+str(chunk_size)
 
-	print("---- predict " + model_name + " ----")
+	print("---- trainning " + model_name + " ----")
 	
-	print("target_place : " + str(target_place) +  ", chunk_size :" + str(chunk_size))
+	print("target_place : " + str(target_place) + ", epochs : " + str(epochs) +  ", chunk_size :" + str(chunk_size))
+
+	print("---- make save directory ----")
+	try:
+		os.mkdir('./data/'+model_name)
+	except:
+		print("target directory arleady exists")
 
 	# ### **データの準備**
 	print("---- load amd data ----")
@@ -175,32 +180,11 @@ def main():
 	X_predict = np.array(test_input_list).reshape(len(test_input_list), chunk_size, test_input_list.shape[2])
 
 
-	tp_lstm = simpleLSTM.simpleLSTM(X, Y, model_name = model_name)
+	tp_lstm = simpleLSTM.simpleLSTM(X, Y, epochs = epochs, model_name = model_name)
 
-	print("---- start prediction----")
-	batch_size = 10000
-	n_batch = len(test_input_list) // batch_size
-	processed_predict = np.array([])
-	for i in range(n_batch+1):
-	    s_idx = i * batch_size
-	    e_idx = (i+1) * batch_size
-	    if e_idx > len(test_input_list):
-	        e_idx = len(test_input_list)
-	    print("---- predict " + str(s_idx) + " ~ " + str(e_idx)+ " ----")
-	    predict = tp_lstm.predict(test_input_list[s_idx:e_idx], model_name)
-	    predict = np.array(predict).reshape(len(predict[0]))
-	    tmp_predict = denormalize_array(predict, output_min, output_max)
-	    processed_predict = np.r_[processed_predict, tmp_predict]
-
-
-	# In[132]:
-	print("MESE : ", calc_mae(processed_predict, np.array(test_output_tp)))
-	print("---- predicted tp ---- ")
-	print(processed_predict[0:100])
-	print()
-	print("----- actual value -----")
-	print(np.array(test_output_tp).reshape(len(test_output_tp))[0:100])
-	print("---- finish prediction -----")
+	print("---- start training ----")
+	tp_lstm.train()
+	print("---- finish training ----")
 
 if __name__ == '__main__':
 	main()
