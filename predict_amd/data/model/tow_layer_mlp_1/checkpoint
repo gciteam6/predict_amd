@@ -1,0 +1,2 @@
+model_checkpoint_path: "tow_layer_mlp_1.ckpt"
+all_model_checkpoint_paths: "tow_layer_mlp_1.ckpt"
