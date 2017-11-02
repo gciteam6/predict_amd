@@ -1,0 +1,2 @@
+model_checkpoint_path: "targetplace_1_kwh_yokohama_nagoya_hamamatsu_osaka_hannou_one_layer_4000.ckpt"
+all_model_checkpoint_paths: "targetplace_1_kwh_yokohama_nagoya_hamamatsu_osaka_hannou_one_layer_4000.ckpt"
