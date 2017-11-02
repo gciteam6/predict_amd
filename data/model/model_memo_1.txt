@@ -1,0 +1,46 @@
+targetplace_1_kwh_yokohama_one_layer_1000
+	yokohamaのamedasデータだけ使ったモデル
+	maeひくいので使わなくてもいいかも(val:230)
+
+targetplace_1_kwh_yokohama_nagoya_one_layer_1000
+	yokohamaとnagoyaのデータをつかったもの
+	yokohamaだけのやつよりちょっとmaeいいけどつかわなくてもいいはず(val:203)
+
+targetplace_1_kwh_yokohama_nagoya_one_layer_2000
+	epochsを増やしたやつ
+	1000の時に比べて学習はすすんだが1600あたりで幸ってる(val:177)
+
+targetplace_1_kwh_yokohama_nagoya_hamamatsu_one_layer_2000
+	yokohama, nagoya, hamamatsuのアメダスデータを使ったやつ
+	まだ学習が終わってないない(val:155)
+
+targetplace_1_kwh_yokohama_nagoya_hamamatsu_one_layer_3000
+	学習は進んでるけどまだおわってないかも(val:160)
+
+targetplace_1_kwh_yokohama_nagoya_hamamatsu_one_layer_4000
+	学習は進んでるけどまだおわってないかも(val:112)
+
+targetplace_1_kwh_yokohama_nagoya_hamamatsu_one_layer_5000
+	epochs 4250あたりでさちった(val:102)
+
+argetplace_1_kwh_yokohama_nagoya_hamamatsu_osaka_one_layer_2000
+	yokohama, nagoya, hamamatsu, osakaのデータを使用
+	学習が終わってないっぽい(val:155)
+
+targetplace_1_kwh_yokohama_nagoya_hamamatsu_osaka_one_layer_3000
+	まだまだ学習できそう(val:132)
+
+targetplace_1_kwh_yokohama_nagoya_hamamatsu_osaka_one_layer_4000
+	epoch3200くらいでさちった(val:155)
+
+targetplace_1_kwh_yokohama_nagoya_hamamatsu_osaka_hannou_one_layer_2000
+	まだ学習はできそう(val:136)
+
+targetplace_1_kwh_yokohama_nagoya_hamamatsu_osaka_hannou_one_layer_3000
+	ロスは減ってるけど??(val:150)	
+
+targetplace_1_kwh_yokohama_nagoya_hamamatsu_osaka_hannou_one_layer_4000
+	まだ学習は進んでいる(val : 121)
+
+targetplace_1_kwh_yokohama_nagoya_hamamatsu_osaka_hannou_one_layer_5000
+	4250くらいのところでサチッタ(val : 121)
