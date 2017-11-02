@@ -3,4 +3,16 @@ targetplace_3_kwh_yokohama_one_layer_1000
 	さちっている(val:266)
 
 targetplace_3_kwh_yokohama_nagoya_one_layer_1000
-	
+	まだ学習が終わってない様子(val:290)
+
+targetplace_3_kwh_yokohama_nagoya_one_layer_2000
+	1800epochsくらいでさちった(val:232)
+
+targetplace_3_kwh_kouhu_nagoya_hamamatsu_one_layer_2000
+	まだすすみそう(val:152)
+
+targetplace_3_kwh_kouhu_nagoya_hamamatsu_one_layer_3000
+	まだすすみそう(val:133)
+
+targetplace_3_kwh_kouhu_nagoya_hamamatsu_one_layer_4000
+	まだいけるかな(val:127)
