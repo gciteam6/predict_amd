@@ -1,0 +1,6 @@
+targetplace_3_kwh_yokohama_one_layer_1000
+	yokomadaだけつかった
+	さちっている(val:266)
+
+targetplace_3_kwh_yokohama_nagoya_one_layer_1000
+	
