@@ -34,3 +34,6 @@ targetplace_2_kwh_yokohama_nagoya__osaka_hannou_one_layer_3000
 
 targetplace_2_kwh_yokohama_nagoya__osaka_hannou_one_layer_4000
 	さちりはじめたけどまだ学習途中(val:199)
+
+targetplace_2_kwh_yokohama_nagoya__osaka_hannou_one_layer_5000
+	epochs 3500あたりでさちってた(val:209)
