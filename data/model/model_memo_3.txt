@@ -10,9 +10,38 @@ targetplace_3_kwh_yokohama_nagoya_one_layer_2000
 
 targetplace_3_kwh_kouhu_nagoya_hamamatsu_one_layer_2000
 	まだすすみそう(val:152)
+	11/3現在誤って消してしまった
 
 targetplace_3_kwh_kouhu_nagoya_hamamatsu_one_layer_3000
 	まだすすみそう(val:133)
 
 targetplace_3_kwh_kouhu_nagoya_hamamatsu_one_layer_4000
 	まだいけるかな(val:127)
+
+targetplace_3_kwh_kouhu_nagoya_hamamatsu_one_layer_5000
+	4250epochsくらいでさちった(val:122)
+
+targetplace_3_kwh_kouhu_nagoya_hamamatsu_one_layer_2000
+	まだすすみそう(val:164)
+
+targetplace_3_kwh_kouhu_nagoya_hamamatsu_one_layer_2000
+	まだすすみそう(val:164)
+
+targetplace_3_kwh_kouhu_nagoya_hamamatsu_osaka_one_layer_3000
+	まだいけそう(val:148)
+
+targetplace_3_kwh_kouhu_nagoya_hamamatsu_osaka_one_layer_4000
+	さちってるような…(val:168)
+
+targetplace_3_kwh_kouhu_nagoya_hamamatsu_osaka_one_layer_5000
+	さちった(val:155)
+
+targetplace_3_kwh_kouhu_nagoya_hamamatsu_osaka_hannou_one_layer_2000
+	まだいけそう(val:203)
+
+targetplace_3_kwh_kouhu_nagoya_hamamatsu_osaka_hannou_one_layer_3000
+	まだいけそう(val:203)
+targetplace_3_kwh_kouhu_nagoya_hamamatsu_osaka_hannou_one_layer_4000
+	もうちょい(val:161)
+targetplace_3_kwh_kouhu_nagoya_hamamatsu_osaka_hannou_one_layer_5000
+	なぞのローカルミニマムに陥った(val:194)
