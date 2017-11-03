@@ -12,7 +12,13 @@ targetplace_2_kwh_yokohama_nagoya_one_layer_3000
 	まだいける(val:181)
 
 targetplace_2_kwh_yokohama_nagoya_one_layer_4000
-	まだ学習はすすめられそうだけど...(val:192)
+	まだ学習はすすめられそうだけど過学習してるっぽい(val:192)
+
+targetplace_2_kwh_yokohama_nagoya_hamamatsu_one_layer_2000
+	まだいけそう(val:280)
+
+targetplace_2_kwh_yokohama_nagoya_hamamatsu_one_layer_3000
+	さちってそう(val:189)
 
 targetplace_2_kwh_yokohama_nagoya_osaka_one_layer_2000
 	まだ学習はすすんでいる(val:226)
