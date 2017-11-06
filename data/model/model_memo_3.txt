@@ -41,7 +41,9 @@ targetplace_3_kwh_kouhu_nagoya_hamamatsu_osaka_hannou_one_layer_2000
 
 targetplace_3_kwh_kouhu_nagoya_hamamatsu_osaka_hannou_one_layer_3000
 	まだいけそう(val:203)
+
 targetplace_3_kwh_kouhu_nagoya_hamamatsu_osaka_hannou_one_layer_4000
 	もうちょい(val:161)
+	
 targetplace_3_kwh_kouhu_nagoya_hamamatsu_osaka_hannou_one_layer_5000
 	なぞのローカルミニマムに陥った(val:194)

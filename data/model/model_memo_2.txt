@@ -19,12 +19,16 @@ targetplace_2_kwh_yokohama_nagoya_hamamatsu_one_layer_2000
 
 targetplace_2_kwh_yokohama_nagoya_hamamatsu_one_layer_3000
 	さちってそう(val:189)
+
 targetplace_2_kwh_yokohama_nagoya_hamamatsu_one_layer_4000
 	もうすこしいける(val:219)
+
 targetplace_2_kwh_yokohama_nagoya_hamamatsu_one_layer_5000
 	ぎゃくに学習がすすまなかった(val:234)
+
 targetplace_2_kwh_yokohama_nagoya_hamamatsu_osaka_one_layer_2000
 	学習がたりない(val:309)
+	
 targetplace_2_kwh_yokohama_nagoya_hamamatsu_osaka_one_layer_3000
 	まだ学習がたりなそう(val:220)
 
