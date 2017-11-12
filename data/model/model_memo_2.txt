@@ -15,7 +15,7 @@ targetplace_2_kwh_yokohama_nagoya_one_layer_4000
 	まだ学習はすすめられそうだけど過学習してるっぽい(val:192)
 
 targetplace_2_kwh_yokohama_nagoya_hamamatsu_one_layer_2000
-	まだいけそう(val:280)
+	まだいけそう(val:236)
 
 targetplace_2_kwh_yokohama_nagoya_hamamatsu_one_layer_3000
 	さちってそう(val:189)
@@ -27,16 +27,14 @@ targetplace_2_kwh_yokohama_nagoya_hamamatsu_one_layer_5000
 	ぎゃくに学習がすすまなかった(val:234)
 
 targetplace_2_kwh_yokohama_nagoya_hamamatsu_osaka_one_layer_2000
-	学習がたりない(val:309)
-	
+	学習がたりない(val:252)
+
 targetplace_2_kwh_yokohama_nagoya_hamamatsu_osaka_one_layer_3000
-	まだ学習がたりなそう(val:220)
+	まだ学習がたりなそう(val:228)
 
 targetplace_2_kwh_yokohama_nagoya_hamamatsu_osaka_one_layer_4000
 	まだいけそうだけど(val:219)	
 
-targetplace_2_kwh_yokohama_nagoya_hamamatsu_osaka_one_layer_5000
-	epochs4500くらいでさちった(val:235)
 targetplace_2_kwh_yokohama_nagoya_hamamatsu_osaka_hannou_one_layer_2000
 	学習不足(val:282)
 
@@ -47,7 +45,7 @@ targetplace_2_kwh_yokohama_nagoya_hamamatsu_osaka_hannou_one_layer_4000
 	まだすすみそう(val:200)
 
 targetplace_2_kwh_yokohama_nagoya_hamamatsu_osaka_hannou_one_layer_5000
-	さちったかな(val:205)
+	さちったようなかんじ(val:217)
 ——————————————————————————————————————————————————————————————————
 
 まちがえたやつ

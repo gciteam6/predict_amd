@@ -1,16 +1,18 @@
-targetplace_3_kwh_yokohama_one_layer_1000
+targetplace_3_kwh_kouhu_one_layer_1000
 	yokomadaだけつかった
 	さちっている(val:266)
 
-targetplace_3_kwh_yokohama_nagoya_one_layer_1000
-	まだ学習が終わってない様子(val:290)
+targetplace_3_kwh_kouhu_nagoya_one_layer_1000
+	まだ学習が終わってない様子(val:252)
 
-targetplace_3_kwh_yokohama_nagoya_one_layer_2000
-	1800epochsくらいでさちった(val:232)
+targetplace_3_kwh_kouhu_nagoya_one_layer_2000
+	まだサチってはない(val:177)
+
+targetplace_3_kwh_kouhu_nagoya_one_layer_3000
+	まださちってはいない(val:155)
 
 targetplace_3_kwh_kouhu_nagoya_hamamatsu_one_layer_2000
-	まだすすみそう(val:152)
-	11/3現在誤って消してしまった
+	まだすすみそう(val:185)
 
 targetplace_3_kwh_kouhu_nagoya_hamamatsu_one_layer_3000
 	まだすすみそう(val:133)
@@ -20,12 +22,6 @@ targetplace_3_kwh_kouhu_nagoya_hamamatsu_one_layer_4000
 
 targetplace_3_kwh_kouhu_nagoya_hamamatsu_one_layer_5000
 	4250epochsくらいでさちった(val:122)
-
-targetplace_3_kwh_kouhu_nagoya_hamamatsu_one_layer_2000
-	まだすすみそう(val:164)
-
-targetplace_3_kwh_kouhu_nagoya_hamamatsu_one_layer_2000
-	まだすすみそう(val:164)
 
 targetplace_3_kwh_kouhu_nagoya_hamamatsu_osaka_one_layer_3000
 	まだいけそう(val:148)
@@ -44,6 +40,6 @@ targetplace_3_kwh_kouhu_nagoya_hamamatsu_osaka_hannou_one_layer_3000
 
 targetplace_3_kwh_kouhu_nagoya_hamamatsu_osaka_hannou_one_layer_4000
 	もうちょい(val:161)
-	
+
 targetplace_3_kwh_kouhu_nagoya_hamamatsu_osaka_hannou_one_layer_5000
 	なぞのローカルミニマムに陥った(val:194)

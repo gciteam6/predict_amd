@@ -12,20 +12,20 @@ targetplace_1_kwh_yokohama_nagoya_one_layer_2000
 
 targetplace_1_kwh_yokohama_nagoya_hamamatsu_one_layer_2000
 	yokohama, nagoya, hamamatsuのアメダスデータを使ったやつ
-	まだ学習が終わってないない(val:155)
+	まだ学習が終わってないない(val:158)
 
 targetplace_1_kwh_yokohama_nagoya_hamamatsu_one_layer_3000
-	学習は進んでるけどまだおわってないかも(val:160)
+	学習は進んでるけどまだおわってないかも(val:139)
 
 targetplace_1_kwh_yokohama_nagoya_hamamatsu_one_layer_4000
 	学習は進んでるけどまだおわってないかも(val:112)
 
 targetplace_1_kwh_yokohama_nagoya_hamamatsu_one_layer_5000
-	epochs 4250あたりでさちった(val:102)
+	epochs 4250あたりでさちった(val:103)
 
 argetplace_1_kwh_yokohama_nagoya_hamamatsu_osaka_one_layer_2000
 	yokohama, nagoya, hamamatsu, osakaのデータを使用
-	学習が終わってないっぽい(val:155)
+	学習が終わってないっぽい(val:152)
 
 targetplace_1_kwh_yokohama_nagoya_hamamatsu_osaka_one_layer_3000
 	まだまだ学習できそう(val:132)
@@ -37,7 +37,7 @@ targetplace_1_kwh_yokohama_nagoya_hamamatsu_osaka_hannou_one_layer_2000
 	まだ学習はできそう(val:136)
 
 targetplace_1_kwh_yokohama_nagoya_hamamatsu_osaka_hannou_one_layer_3000
-	ロスは減ってるけど??(val:150)	
+	ロスは減ってるけど??(val:141)	
 
 targetplace_1_kwh_yokohama_nagoya_hamamatsu_osaka_hannou_one_layer_4000
 	まだ学習は進んでいる(val : 121)
