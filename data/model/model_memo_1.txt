@@ -44,3 +44,32 @@ targetplace_1_kwh_yokohama_nagoya_hamamatsu_osaka_hannou_one_layer_4000
 
 targetplace_1_kwh_yokohama_nagoya_hamamatsu_osaka_hannou_one_layer_5000
 	4250くらいのところでサチッタ(val : 121)
+
+targetplace_1_kwh_fc_one_layer_2000
+	天気予報のデータを使ったmlp
+	まだ学習が進みそう(val:163)
+
+targetplace_1_kwh_fc_one_layer_3000
+	もうちょいいけるかも(val:147)
+
+targetplace_1_kwh_fc_one_layer_4000
+	まださちってるかはわからない(val:141)
+
+targetplace_1_kwh_fc_one_layer_5000
+	val5.6e^-03までいったけどサチってそう(val:130)
+
+targetplace_1_kwh_fc_month_one_layer_1000
+	fcにmonthのsin, cosを追加したモデル
+	まだいけそう(val:153)
+
+targetplace_1_kwh_fc_month_one_layer_2000
+	まだいけそう(val:130)
+
+targetplace_1_kwh_fc_month_one_layer_3000
+	6.0e^-03の壁をこえるかこえないか(val:125)
+
+targetplace_1_kwh_fc_month_one_layer_4000
+	壁を超えた(val:116)
+
+targetplace_1_kwh_fc_month_one_layer_4000
+	4.2e^-03までいった(val:107)

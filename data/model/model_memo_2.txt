@@ -46,6 +46,35 @@ targetplace_2_kwh_yokohama_nagoya_hamamatsu_osaka_hannou_one_layer_4000
 
 targetplace_2_kwh_yokohama_nagoya_hamamatsu_osaka_hannou_one_layer_5000
 	さちったようなかんじ(val:217)
+
+targetplace_2_kwh_fc_one_layer_2000
+	気象予報データを使ったmlp
+	まだ進められる(val:292)
+
+targetplace_2_kwh_fc_one_layer_3000
+	まだいける(val:260)
+
+targetplace_2_kwh_fc_one_layer_4000
+	さちったっぽい(val:243)
+
+targetplace_2_kwh_fc_one_layer_5000
+	まだいけた(val:234)
+
+targetplace_2_kwh_fc_month_one_layer_1000
+	天気予報と月のsin, cosを加えたもの(val:243)
+
+targetplace_2_kwh_fc_month_one_layer_2000
+	うまくすすんでくれなかった(val:247)
+
+targetplace_2_kwh_fc_month_one_layer_3000
+	もうすこしすすむ(val:220)
+
+targetplace_2_kwh_fc_month_one_layer_4000
+	5.0e^-03を下回れた(val:204)
+
+targetplace_2_kwh_fc_month_one_layer_5000
+	過学習してるくさいけどまだ下がりそう(val:188)
+
 ——————————————————————————————————————————————————————————————————
 
 まちがえたやつ

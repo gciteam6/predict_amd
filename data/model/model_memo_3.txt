@@ -42,4 +42,32 @@ targetplace_3_kwh_kouhu_nagoya_hamamatsu_osaka_hannou_one_layer_4000
 	もうちょい(val:161)
 
 targetplace_3_kwh_kouhu_nagoya_hamamatsu_osaka_hannou_one_layer_5000
-	なぞのローカルミニマムに陥った(val:194)
+	なぞのローカルミニマムに陥った(val:194
+
+targetplace_3_kwh_fc_one_layer_2000
+	気象予報の情報を使った
+	結構進んださちってるかは判断不能(val:191)
+
+targetplace_3_kwh_fc_one_layer_3000
+	すこし進んだ(val:184)
+
+targetplace_3_kwh_fc_one_layer_4000
+	まだいけそうだけど(val:175)
+
+targetplace_3_kwh_fc_one_layer_5000
+	さちっている様子はない(val:159)
+
+targetplace_3_kwh_fc_month_one_layer_1000
+	気象予報データと月を入れたやつ(val:212)
+
+targetplace_3_kwh_fc_month_one_layer_2000
+	まだすすみそう(val:177)
+
+targetplace_3_kwh_fc_month_one_layer_3000
+	5.0e^-03を下回れた(val:165)
+
+targetplace_3_kwh_fc_month_one_layer_4000
+	4.0e^-03を下回れた(val:145)
+
+targetplace_3_kwh_fc_month_one_layer_5000
+	4.0e^-03を下回れた(val:134)
