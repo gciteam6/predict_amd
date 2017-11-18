@@ -1,0 +1,2 @@
+model_checkpoint_path: "targetplace_3_sl_fc_with_wc_month_one_layer_1000.ckpt"
+all_model_checkpoint_paths: "targetplace_3_sl_fc_with_wc_month_one_layer_1000.ckpt"

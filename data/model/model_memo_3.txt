@@ -71,3 +71,33 @@ targetplace_3_kwh_fc_month_one_layer_4000
 
 targetplace_3_kwh_fc_month_one_layer_5000
 	4.0e^-03を下回れた(val:134)
+
+targetplace_3_kwh_fc_with_wc_month_one_layer_1000
+	wfcからwcのカラムを消さないやつ(val:200)
+
+targetplace_3_kwh_fc_with_wc_month_one_layer_2000
+	6.0e^-03を下回った(val:181)
+
+targetplace_3_kwh_fc_with_wc_month_one_layer_3000
+	4.3e^-03あたり(val:141)
+
+targetplace_3_kwh_fc_with_wc_month_one_layer_4000
+	3.0e^-03あたり(val:128)
+
+targetplace_3_kwh_fc_with_wc_month_one_layer_5000
+	2.5e^-03あたり(val:132)
+
+targetplace_3_kwh_all_wfc_month_one_layer_1000
+	いままでwvを抜いていたけど入れてみたやつ(val:205)
+
+targetplace_3_kwh_all_wfc_month_one_layer_2000
+	4.3e^-03あたり(val:160)
+
+targetplace_3_kwh_all_wfc_month_one_layer_3000
+	3.4e^-03あたり(val:134)
+
+targetplace_3_kwh_all_wfc_month_one_layer_4000
+	2.5e^-03あたり(val:121)
+
+targetplace_3_kwh_all_wfc_month_one_layer_5000
+	2.2e^-03あたり(val:115)

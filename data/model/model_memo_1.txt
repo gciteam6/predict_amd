@@ -73,3 +73,34 @@ targetplace_1_kwh_fc_month_one_layer_4000
 
 targetplace_1_kwh_fc_month_one_layer_4000
 	4.2e^-03までいった(val:107)
+
+targetplace_1_kwh_fc_wc_month_one_layer_1000
+	wcはダミーはダミーだけど順序があるダミーなのでそのまま数字としてつかってよいはず
+	wfcを使うに当たって削除していたwcのカラムを扱うようにした(val:157)
+
+targetplace_1_kwh_fc_wc_month_one_layer_2000
+	まだすすむよ(val:128)
+
+targetplace_1_kwh_fc_wc_month_one_layer_3000
+	まだすすむよ(val:117)
+
+targetplace_1_kwh_fc_wc_month_one_layer_4000
+	4.4e^-03(val:107)
+
+targetplace_1_kwh_fc_wc_month_one_layer_5000
+	3.3e^-03(val:99)
+
+targetplace_1_kwh_all_wfc_month_one_layer_1000
+	いままでwvを抜いていたけど入れてみたやつ(val:140)
+
+targetplace_1_kwh_all_wfc_month_one_layer_2000
+	5.0e^-03ちかくまでいった(val:126)
+
+targetplace_1_kwh_all_wfc_month_one_layer_3000
+	3.6e^-03ちかくまでいった(val:102)
+
+targetplace_1_kwh_all_wfc_month_one_layer_4000
+	3.2e^-03ちかくまでいった(val:95)
+
+targetplace_1_kwh_all_wfc_month_one_layer_5000
+	2.6e^-03ちかくまでいった(val:86)

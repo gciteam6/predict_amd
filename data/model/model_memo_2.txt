@@ -75,6 +75,36 @@ targetplace_2_kwh_fc_month_one_layer_4000
 targetplace_2_kwh_fc_month_one_layer_5000
 	過学習してるくさいけどまだ下がりそう(val:188)
 
+targetplace_2_kwh_fc_with_wc_month_one_layer_1000
+	天気予報のデータからwcをドロップしないやつ(val:246)
+
+targetplace_2_kwh_fc_with_wc_month_one_layer_2000
+	1000に比べてあまりすすまなかった(val:239)
+
+targetplace_2_kwh_fc_with_wc_month_one_layer_3000
+	5.0e^-03近辺まできた(val:220)
+
+targetplace_2_kwh_fc_with_wc_month_one_layer_4000
+	4.0e^-03近辺まできた(val:190)
+
+targetplace_2_kwh_fc_with_wc_month_one_layer_5000
+	3.0e^-03近辺まできた(val:167)
+
+targetplace_2_kwh_all_wfc_month_one_layer_1000
+	いままでwvを抜いていたけど入れてみたやつ(val:240)
+
+targetplace_2_kwh_all_wfc_month_one_layer_2000
+	5.1e^-0.3(val:218)
+
+targetplace_2_kwh_all_wfc_month_one_layer_3000
+	4.5e^-0.3(val:190)
+
+targetplace_2_kwh_all_wfc_month_one_layer_4000
+	2.8e^-0.3(val:168)
+
+targetplace_2_kwh_all_wfc_month_one_layer_5000
+	2.2e^-0.3(val:143)
+
 ——————————————————————————————————————————————————————————————————
 
 まちがえたやつ

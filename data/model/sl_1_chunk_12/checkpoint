@@ -1,0 +1,2 @@
+model_checkpoint_path: "sl_1_chunk_12.ckpt"
+all_model_checkpoint_paths: "sl_1_chunk_12.ckpt"
