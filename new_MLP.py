@@ -4,7 +4,7 @@ import tensorflow as tf
 import random
 
 class MLP:
-    def __init__(self, X, Y, X_val, Y_val, epochs = 100, hidden_size = 100, batch_size = 100, model_name = "test_model"):
+    def __init__(self, X, Y, X_val, Y_val, epochs = 100, hidden_size = 100, batch_size = 100, model_name = "test_model", activation = "sigmoid"):
         # 学習データと検証用データに分けておく
         self.X = X # 入力
         self.Y = Y # 教師
@@ -20,6 +20,7 @@ class MLP:
         self.batch_size = batch_size #バッチサイズ
         self.learning_rate = 0.01 # 学習率 適当
         self.epochs = epochs #エポック数
+        self.activation = activation
         
         # 学習データの保存
         self.model_name = str(model_name)
@@ -47,9 +48,13 @@ class MLP:
         output_b = tf.Variable(tf.truncated_normal([self.output_layer_size]), name='output_b')
         
         # 計算
-        hidden = tf.sigmoid(tf.matmul(input_ph, hidden_w) + hidden_b)
-        output = tf.sigmoid(tf.matmul(hidden, output_w) + output_b)
-        
+        if  self.activation == "sigmoid":
+            hidden = tf.sigmoid(tf.matmul(input_ph, hidden_w) + hidden_b)
+            output = tf.sigmoid(tf.matmul(hidden, output_w) + output_b)
+        elif  self.activation == "relu":
+            hidden = tf.nn.relu(tf.matmul(input_ph, hidden_w) + hidden_b)
+            output = tf.nn.relu(tf.matmul(hidden, output_w) + output_b)
+
         weights = [hidden_w, output_w, hidden_w, hidden_b]
         
         return output, weights
