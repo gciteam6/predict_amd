@@ -87,7 +87,7 @@ class MLP:
         n_batch = self.X.shape[0] // self.batch_size
 
         # early stop用
-        validation_losses = [9999, 9999]
+        validation_losses = [9999, 9999, 9999]
         
         with tf.Graph().as_default():
             # 変数の用意
@@ -133,7 +133,7 @@ class MLP:
                         print("train#%d, validation loss: %e" % (epoch, train_loss))
                         summary_writer.add_summary(summary_str, epoch)
 
-                        if validation_losses[-1] < train_loss or validation_losses[-2] < train_loss:
+                        if validation_losses[-1] < train_loss and validation_losses[-2] < train_loss and validation_losses[-3] < train_loss:
                             print("do early stopping")
                             break
 
