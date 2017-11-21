@@ -5,9 +5,8 @@ import tensorflow as tf
 import random
 
 class MLP:
-    def __init__(self, X, Y, epochs = 100, hidden_size = 100, batch_size = 100, model_name = "test_model"):
+    def __init__(self, X, Y, X_val, Y_val, epochs = 100, hidden_size = 100, batch_size = 100, model_name = "test_model"):
         # 学習データと検証用データに分けておく
-        X_train, X_val, Y_train, Y_val = train_test_split(X, Y, test_size=int((X.shape[0] * 0.2)))
         self.X = X # 入力
         self.Y = Y # 教師
         self.X_val = X_val # 検証用

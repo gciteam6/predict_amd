@@ -42,18 +42,20 @@ class MLP:
         '''
         
         # 重みとバイアスの初期化
-        hidden_w = tf.Variable(tf.truncated_normal([self.input_layer_size, self.hidden_layer_size], stddev=0.01), name='hidden_w')
-        hidden_b = tf.Variable(tf.truncated_normal([self.hidden_layer_size]), name='hidden_b')
-        output_w = tf.Variable(tf.truncated_normal([self.hidden_layer_size, self.output_layer_size], stddev=0.01), name='output_w')
-        output_b = tf.Variable(tf.truncated_normal([self.output_layer_size]), name='output_b')
+        hidden_w = tf.Variable(tf.random_normal([self.input_layer_size, self.hidden_layer_size], stddev=0.01), name='hidden_w')
+        hidden_b = tf.Variable(tf.random_normal([self.hidden_layer_size]), name='hidden_b')
+        output_w = tf.Variable(tf.random_normal([self.hidden_layer_size, self.output_layer_size], stddev=0.01), name='output_w')
+        output_b = tf.Variable(tf.random_normal([self.output_layer_size]), name='output_b')
         
         # 計算
         if  self.activation == "sigmoid":
             hidden = tf.sigmoid(tf.matmul(input_ph, hidden_w) + hidden_b)
-            output = tf.sigmoid(tf.matmul(hidden, output_w) + output_b)
         elif  self.activation == "relu":
             hidden = tf.nn.relu(tf.matmul(input_ph, hidden_w) + hidden_b)
-            output = tf.nn.relu(tf.matmul(hidden, output_w) + output_b)
+        elif self.activation == "tanh":
+            hidden = tf.tanh(tf.matmul(input_ph, hidden_w) + hidden_b)
+
+        output = tf.matmul(hidden, output_w) + output_b
 
         weights = [hidden_w, output_w, hidden_w, hidden_b]
         
