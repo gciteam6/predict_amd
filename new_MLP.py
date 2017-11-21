@@ -85,6 +85,9 @@ class MLP:
         np.random.seed(0)
         tf.set_random_seed(0)
         n_batch = self.X.shape[0] // self.batch_size
+
+        # early stop用
+        validation_losses = [9999, 9999]
         
         with tf.Graph().as_default():
             # 変数の用意
@@ -129,12 +132,18 @@ class MLP:
                         summary_str, train_loss = sess.run([summary, cost], feed_dict=val_dict)
                         print("train#%d, validation loss: %e" % (epoch, train_loss))
                         summary_writer.add_summary(summary_str, epoch)
-                        
+
+                        if validation_losses[-1] < train_loss or validation_losses[-2] < train_loss:
+                            print("do early stopping")
+                            break
+
+                        validation_losses.append(train_loss)
+
                     datas = sess.run(weights)
                     saver.save(sess,  "./data/model/" + str(self.model_name) + "/" + str(self.model_name) + ".ckpt")
                     
-                datas = sess.run(weights)
-                saver.save(sess, "./data/model/" + str(self.model_name) + "/" + str(self.model_name) + ".ckpt")
+                # datas = sess.run(weights)
+                # saver.save(sess, "./data/model/" + str(self.model_name) + "/" + str(self.model_name) + ".ckpt")
                 
     def predict(self, X_predict, model_name = "test_model"):
         '''
