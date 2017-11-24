@@ -130,7 +130,7 @@ class two_layer:
                     
                     sess.run(optimizer, feed_dict=train_dict)
 
-                    if (epoch) % (self.epochs//20) == 0:
+                    if (epoch) % (self.epochs//50) == 0:
                         val_dict = {
                             input_ph:      self.X_val,
                             actual_ph:     self.Y_val,
